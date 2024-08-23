@@ -15,7 +15,6 @@
             justify-content: space-around;
             align-items: center;
             background-color: #333;
-            font-family: Arial, sans-serif;
         }
         .box {
             position: relative;
@@ -28,13 +27,9 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             color: white;
-            text-align: center;
             font-size: 1.5em;
-            font-weight: bold;
-            border-radius: 10px;
-            overflow: hidden;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            line-height: 1.2;
         }
         #box1 {
             background-color: #FF6F61; /* Light Red */
@@ -51,16 +46,9 @@
         .box.dimmed {
             background-color: #222;
         }
-        .box .text {
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            font-size: 1.2em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
         .controls {
             position: absolute;
-            bottom: 60px;
+            bottom: 10px;
             width: 90%;
             display: flex;
             justify-content: space-around;
@@ -69,97 +57,59 @@
             padding: 10px;
             font-size: 1em;
             cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #444;
-            color: white;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        button:hover {
-            background-color: #555;
-            transform: scale(1.05);
-        }
-        button:active {
-            background-color: #666;
-            transform: scale(0.95);
-        }
-        .fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        .fullscreen.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .fullscreen button {
-            position: absolute;
-            bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div id="box1" class="box" onclick="togglePlayPause('audio1', 'box1')">
+    <div id="box1" class="box" data-audio="audio1">
+        Morning Aarti
         <audio id="audio1">
             <source src="https://raw.githubusercontent.com/veeralpatel02/arti/main/ShayanMansi.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
-        <div class="text">Morning Aarti</div>
         <div class="controls">
             <button onclick="stopAudio('audio1', event)">Stop</button>
+            <button onclick="toggleFullscreen('box1')">Fullscreen</button>
         </div>
     </div>
 
-    <div id="box2" class="box" onclick="togglePlayPause('audio2', 'box2')">
+    <div id="box2" class="box" data-audio="audio2">
+        Evening Aarti
         <audio id="audio2">
             <source src="https://raw.githubusercontent.com/veeralpatel02/arti/main/ShayanMansi.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
-        <div class="text">Evening Aarti</div>
         <div class="controls">
             <button onclick="stopAudio('audio2', event)">Stop</button>
+            <button onclick="toggleFullscreen('box2')">Fullscreen</button>
         </div>
     </div>
 
-    <div id="box3" class="box" onclick="togglePlayPause('audio3', 'box3')">
+    <div id="box3" class="box" data-audio="audio3">
+        Shayan Mansi
         <audio id="audio3">
             <source src="https://raw.githubusercontent.com/veeralpatel02/arti/main/ShayanMansi.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
-        <div class="text">Shayan Mansi</div>
         <div class="controls">
             <button onclick="stopAudio('audio3', event)">Stop</button>
+            <button onclick="toggleFullscreen('box3')">Fullscreen</button>
         </div>
     </div>
 
-    <div id="box4" class="box" onclick="togglePlayPause('audio4', 'box4')">
+    <div id="box4" class="box" data-audio="audio4">
+        Chesta
         <audio id="audio4">
             <source src="https://raw.githubusercontent.com/veeralpatel02/arti/main/ShayanMansi.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
-        <div class="text">Chesta</div>
         <div class="controls">
             <button onclick="stopAudio('audio4', event)">Stop</button>
+            <button onclick="toggleFullscreen('box4')">Fullscreen</button>
         </div>
-    
-    
-    </div>
-    <div id="fullscreen-container" class="fullscreen">
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
