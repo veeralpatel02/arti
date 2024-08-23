@@ -29,7 +29,6 @@
             color: white;
             font-size: 1.5em;
             text-align: center;
-            line-height: 1.2;
         }
         #box1 {
             background-color: #FF6F61; /* Light Red */
@@ -61,52 +60,51 @@
     </style>
 </head>
 <body>
-
     <div id="box1" class="box" data-audio="audio1">
-        Morning Aarti
         <audio id="audio1">
-            <source src="https://raw.githubusercontent.com/veeralpatel02/arti/main/ShayanMansi.wav" type="audio/wav">
+            <source src="https://github.com/veeralpatel02/arti/raw/main/ShayanMansi.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
+        <div>Morning Aarti</div>
         <div class="controls">
-            <button onclick="stopAudio('audio1', event)">Stop</button>
-            <button onclick="toggleFullscreen('box1')">Fullscreen</button>
+            <button class="stop">Stop</button>
+            <button class="fullscreen">Fullscreen</button>
         </div>
     </div>
 
     <div id="box2" class="box" data-audio="audio2">
-        Evening Aarti
         <audio id="audio2">
-            <source src="https://raw.githubusercontent.com/veeralpatel02/arti/main/ShayanMansi.wav" type="audio/wav">
+            <source src="https://github.com/veeralpatel02/arti/raw/main/ShayanMansi.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
+        <div>Evening Aarti</div>
         <div class="controls">
-            <button onclick="stopAudio('audio2', event)">Stop</button>
-            <button onclick="toggleFullscreen('box2')">Fullscreen</button>
+            <button class="stop">Stop</button>
+            <button class="fullscreen">Fullscreen</button>
         </div>
     </div>
 
     <div id="box3" class="box" data-audio="audio3">
-        Shayan Mansi
         <audio id="audio3">
-            <source src="https://raw.githubusercontent.com/veeralpatel02/arti/main/ShayanMansi.wav" type="audio/wav">
+            <source src="https://github.com/veeralpatel02/arti/raw/main/ShayanMansi.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
+        <div>Shayan Mansi</div>
         <div class="controls">
-            <button onclick="stopAudio('audio3', event)">Stop</button>
-            <button onclick="toggleFullscreen('box3')">Fullscreen</button>
+            <button class="stop">Stop</button>
+            <button class="fullscreen">Fullscreen</button>
         </div>
     </div>
 
     <div id="box4" class="box" data-audio="audio4">
-        Chesta
         <audio id="audio4">
-            <source src="https://raw.githubusercontent.com/veeralpatel02/arti/main/ShayanMansi.wav" type="audio/wav">
+            <source src="https://github.com/veeralpatel02/arti/raw/main/ShayanMansi.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
+        <div>Chesta</div>
         <div class="controls">
-            <button onclick="stopAudio('audio4', event)">Stop</button>
-            <button onclick="toggleFullscreen('box4')">Fullscreen</button>
+            <button class="stop">Stop</button>
+            <button class="fullscreen">Fullscreen</button>
         </div>
     </div>
 
