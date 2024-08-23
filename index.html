@@ -119,7 +119,6 @@
         <div class="text">Morning Aarti</div>
         <div class="controls">
             <button onclick="stopAudio('audio1', event)">Stop</button>
-            <button onclick="toggleFullscreen('box1')">Fullscreen</button>
         </div>
     </div>
 
@@ -131,19 +130,17 @@
         <div class="text">Evening Aarti</div>
         <div class="controls">
             <button onclick="stopAudio('audio2', event)">Stop</button>
-            <button onclick="toggleFullscreen('box2')">Fullscreen</button>
         </div>
     </div>
 
     <div id="box3" class="box" onclick="togglePlayPause('audio3', 'box3')">
         <audio id="audio3">
-            <source src="https://www.mediafire.com/file/afcpgsljx8frn08/ShayanMansi.wav/download" type="audio/wav">
+            <source src="ShayanMansi.mp3" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
         <div class="text">Shayan Mansi</div>
         <div class="controls">
             <button onclick="stopAudio('audio3', event)">Stop</button>
-            <button onclick="toggleFullscreen('box3')">Fullscreen</button>
         </div>
     </div>
 
@@ -155,12 +152,11 @@
         <div class="text">Chesta</div>
         <div class="controls">
             <button onclick="stopAudio('audio4', event)">Stop</button>
-            <button onclick="toggleFullscreen('box4')">Fullscreen</button>
         </div>
+    
+    
     </div>
-
     <div id="fullscreen-container" class="fullscreen">
-        <button onclick="exitFullscreen()">Exit Fullscreen</button>
     </div>
 
     <script src="script.js"></script>

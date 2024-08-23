@@ -6,16 +6,19 @@ function togglePlayPause(audioId, boxId) {
     const box = document.getElementById(boxId);
 
     if (currentAudio && currentAudio !== audio) {
+        // Pause the currently playing audio
         currentAudio.pause();
         currentBox.classList.remove('dimmed');
     }
 
     if (audio.paused) {
+        // Play the selected audio
         audio.play();
         box.classList.add('dimmed');
         currentAudio = audio;
         currentBox = box;
     } else {
+        // Pause the selected audio
         audio.pause();
         box.classList.remove('dimmed');
         currentAudio = null;
@@ -34,26 +37,14 @@ function stopAudio(audioId, event) {
     currentBox = null;
 }
 
-function toggleFullscreen(boxId) {
-    const box = document.getElementById(boxId);
-    const fullscreenContainer = document.getElementById('fullscreen-container');
-    fullscreenContainer.classList.add('active');
-    fullscreenContainer.appendChild(box); // Move the box into fullscreen container
-    fullscreenContainer.style.zIndex = 1000; // Ensure it's above other elements
-}
-
-function exitFullscreen() {
-    const fullscreenContainer = document.getElementById('fullscreen-container');
-    const box = fullscreenContainer.firstElementChild;
-    if (box) {
-        document.body.appendChild(box); // Move the box back to body
-        fullscreenContainer.classList.remove('active');
-        fullscreenContainer.style.zIndex = -1; // Reset z-index
-    }
-}
-
 // Add event listeners for all boxes to handle play/pause
 document.querySelectorAll('.box').forEach(box => {
     const audioId = box.getAttribute('data-audio');
     box.addEventListener('click', () => togglePlayPause(audioId, box.id));
+});
+
+// Add event listeners for stop buttons inside each box
+document.querySelectorAll('.stop-button').forEach(button => {
+    const audioId = button.getAttribute('data-audio');
+    button.addEventListener('click', (event) => stopAudio(audioId, event));
 });
