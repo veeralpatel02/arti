@@ -1,31 +1,59 @@
-function playAudio(id) {
-    var audio = document.getElementById(id);
-    audio.play();
-}
+let currentAudio = null;
+let currentBox = null;
 
-function pauseAudio(id) {
-    var audio = document.getElementById(id);
-    audio.pause();
-}
+function togglePlayPause(audioId, boxId) {
+    const audio = document.getElementById(audioId);
+    const box = document.getElementById(boxId);
 
-function stopAudio(id) {
-    var audio = document.getElementById(id);
-    audio.pause();
-    audio.currentTime = 0;
-}
+    if (currentAudio && currentAudio !== audio) {
+        currentAudio.pause();
+        currentBox.classList.remove('dimmed');
+    }
 
-function dimBox(id) {
-    var box = document.getElementById(id);
-    box.classList.toggle('dimmed');
-}
-
-function toggleFullscreen(id) {
-    var element = document.getElementById(id);
-    if (!document.fullscreenElement) {
-        element.requestFullscreen().catch(err => {
-            alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-        });
+    if (audio.paused) {
+        audio.play();
+        box.classList.add('dimmed');
+        currentAudio = audio;
+        currentBox = box;
     } else {
-        document.exitFullscreen();
+        audio.pause();
+        box.classList.remove('dimmed');
+        currentAudio = null;
+        currentBox = null;
     }
 }
+
+function stopAudio(audioId, event) {
+    event.stopPropagation(); // Prevents click from toggling play/pause
+    const audio = document.getElementById(audioId);
+    const box = document.getElementById(audioId.replace('audio', 'box'));
+    audio.pause();
+    audio.currentTime = 0; // Reset audio to start
+    box.classList.remove('dimmed');
+    currentAudio = null;
+    currentBox = null;
+}
+
+function toggleFullscreen(boxId) {
+    const box = document.getElementById(boxId);
+    const fullscreenContainer = document.getElementById('fullscreen-container');
+    fullscreenContainer.classList.add('active');
+    fullscreenContainer.appendChild(box); // Move the box into fullscreen container
+    fullscreenContainer.style.zIndex = 1000; // Ensure it's above other elements
+}
+
+function exitFullscreen() {
+    const fullscreenContainer = document.getElementById('fullscreen-container');
+    const box = fullscreenContainer.firstElementChild;
+    if (box) {
+        document.body.appendChild(box); // Move the box back to body
+        fullscreenContainer.classList.remove('active');
+        fullscreenContainer.style.zIndex = -1; // Reset z-index
+    }
+}
+
+// Add event listeners for all boxes to handle play/pause
+document.querySelectorAll('.box').forEach(box => {
+    const audioId = box.getAttribute('data-audio');
+    box.addEventListener('click', () => togglePlayPause(audioId, box.id));
+});
