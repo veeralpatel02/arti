@@ -70,11 +70,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Function to update the slider and time displays
+    function updateSliderAndTime(box, audio, slider, currentTimeDisplay, durationDisplay) {
+        audio.addEventListener('loadedmetadata', () => {
+            slider.max = audio.duration;
+            updateDuration();
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            slider.value = audio.currentTime;
+            updateCurrentTime();
+        });
+
+        slider.addEventListener('input', () => {
+            audio.currentTime = slider.value;
+        });
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function updateCurrentTime() {
+            currentTimeDisplay.textContent = formatTime(audio.currentTime);
+        }
+
+        function updateDuration() {
+            durationDisplay.textContent = formatTime(audio.duration);
+        }
+
+        audio.addEventListener('loadedmetadata', updateDuration);
+    }
+
     // Set up event listeners for boxes
     document.querySelectorAll('.box').forEach(box => {
         const audioId = box.getAttribute('data-audio');
+        const audio = document.getElementById(audioId);
+        const slider = box.querySelector('input[type="range"]');
+        const currentTimeDisplay = box.querySelector('.current-time');
+        const durationDisplay = box.querySelector('.duration');
+
         const playPauseHandler = () => togglePlayPause(audioId, box.id);
         const stopHandler = (event) => stopAudio(audioId, event);
+
+        // Initialize slider and time displays
+        if (audio && slider) {
+            updateSliderAndTime(box, audio, slider, currentTimeDisplay, durationDisplay);
+        }
 
         box.addEventListener('click', playPauseHandler);
 

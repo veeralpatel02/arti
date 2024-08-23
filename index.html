@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audio Boxes</title>
+    <title>Ahnik 2024</title>
     <style>
+        /* Basic Reset and Full-Screen Layout */
         body, html {
             margin: 0;
             padding: 0;
@@ -15,21 +16,34 @@
             justify-content: space-around;
             align-items: center;
             background-color: #333;
+            font-family: 'Avenir', sans-serif; /* Fallback font */
         }
+
+        /* Box Styles */
         .box {
             position: relative;
             width: 45%;
             height: 45vh;
             margin: 10px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
             color: white;
-            font-size: 1.5em;
             text-align: center;
+            font-size: 1.5em;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+        /* Box Colors */
         #box1 {
             background-color: #FF6F61; /* Light Red */
         }
@@ -40,11 +54,15 @@
             background-color: #88B04B; /* Green */
         }
         #box4 {
-            background-color: #F7CAC9; /* Pink */
+            background-color: #bf6cfd; /* Pink */
         }
+
+        /* Dimmed State */
         .box.dimmed {
             background-color: #222;
         }
+
+        /* Controls Container */
         .controls {
             position: absolute;
             bottom: 10px;
@@ -52,35 +70,139 @@
             display: flex;
             justify-content: space-around;
         }
+
+        /* Button Styles */
         button {
-            padding: 10px;
+            padding: 10px 20px;
             font-size: 1em;
             cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background: #3498db; /* Blue */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: #2980b9; /* Darker Blue */
+            transform: scale(1.05);
+        }
+
+        button:active {
+            background: #1f618d; /* Even Darker Blue */
+            transform: scale(0.95);
+        }
+
+        button.stop {
+            background: #e74c3c; /* Red */
+        }
+
+        button.stop:hover {
+            background: #c0392b; /* Darker Red */
+        }
+
+        button.stop:active {
+            background: #a93226; /* Even Darker Red */
+        }
+
+        /* Text Styling */
+        .box div {
+            margin: 10px 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .box-title {
+            font-size: 2em; /* Title size */
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Slider and Time Display Styling */
+        .slider-container {
+            width: 80%;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 1em; /* Reduced font size for smaller text */
+            color: #ddd; /* Lighter color for better contrast */
+            margin-top: 5px;
+        }
+
+        .current-time, .duration {
+            width: 10%;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin: 15px 0;
+            -webkit-appearance: none; /* Remove default styles in WebKit browsers */
+            background: #555; /* Slider track background */
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            background: #3498db; /* Slider thumb color */
+            border-radius: 5px;
+            width: 15px;
+            height: 15px;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            background: #3498db; /* Slider thumb color */
+            border-radius: 5px;
+            width: 15px;
+            height: 15px;
+        }
+
+        input[type="range"]::-ms-thumb {
+            background: #3498db; /* Slider thumb color */
+            border-radius: 5px;
+            width: 15px;
+            height: 15px;
         }
     </style>
 </head>
 <body>
     <div id="box1" class="box" data-audio="audio1">
         <audio id="audio1">
-            <source src="https://github.com/veeralpatel02/arti/raw/main/ShayanMansi.wav" type="audio/wav">
+            <source src="https://github.com/veeralpatel02/arti/raw/main/MorningAarti.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
-        <div>Morning Aarti</div>
+        
+        <div class="box-title">Morning Aarti <br> સવારની આરતી</div>
+        <div class="slider-container">
+            <input type="range" min="0" value="0" step="0.1">
+            <div class="time-display">
+                <span class="current-time">0:00</span>
+                <span class="duration">0:00</span>
+            </div>
+        </div>
         <div class="controls">
             <button class="stop">Stop</button>
-            <button class="fullscreen">Fullscreen</button>
         </div>
     </div>
 
     <div id="box2" class="box" data-audio="audio2">
         <audio id="audio2">
-            <source src="https://github.com/veeralpatel02/arti/raw/main/ShayanMansi.wav" type="audio/wav">
+            <source src="https://github.com/veeralpatel02/arti/raw/main/EveningAarti.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
-        <div>Evening Aarti</div>
+        <div class="box-title">Evening Aarti <br> સાંજની આરતી</div>
+        <div class="slider-container">
+            <input type="range" min="0" value="0" step="0.1">
+            <div class="time-display">
+                <span class="current-time">0:00</span>
+                <span class="duration">0:00</span>
+            </div>
+        </div>
         <div class="controls">
             <button class="stop">Stop</button>
-            <button class="fullscreen">Fullscreen</button>
         </div>
     </div>
 
@@ -89,24 +211,55 @@
             <source src="https://github.com/veeralpatel02/arti/raw/main/ShayanMansi.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
-        <div>Shayan Mansi</div>
+        <div class="box-title">Shayan Mānsi <br> માનસી</div>
+        <div class="slider-container">
+            <input type="range" min="0" value="0" step="0.1">
+            <div class="time-display">
+                <span class="current-time">0:00</span>
+                <span class="duration">0:00</span>
+            </div>
+        </div>
         <div class="controls">
             <button class="stop">Stop</button>
-            <button class="fullscreen">Fullscreen</button>
         </div>
     </div>
 
     <div id="box4" class="box" data-audio="audio4">
         <audio id="audio4">
-            <source src="https://github.com/veeralpatel02/arti/raw/main/ShayanMansi.wav" type="audio/wav">
+            <source src="https://github.com/veeralpatel02/arti/raw/main/Chesta.wav" type="audio/wav">
             Your browser does not support the audio tag.
         </audio>
-        <div>Chesta</div>
+        <div class="box-title">Chesta <br> કીર્તન મુક્તાવલી</div>
+        <div class="slider-container">
+            <input type="range" min="0" value="0" step="0.1">
+            <div class="time-display">
+                <span class="current-time">0:00</span>
+                <span class="duration">0:00</span>
+            </div>
+        </div>
         <div class="controls">
             <button class="stop">Stop</button>
-            <button class="fullscreen">Fullscreen</button>
         </div>
     </div>
+
+    <div id="box5" class="box" data-audio="audio5">
+        <audio id="audio5">
+            <source src="https://github.com/veeralpatel02/arti/raw/main/BAPSMorningBhajan.wav" type="audio/wav">
+            Your browser does not support the audio tag.
+        </audio>
+        <div class="box-title">Morning Bhajans</div>
+        <div class="slider-container">
+            <input type="range" min="0" value="0" step="0.1">
+            <div class="time-display">
+                <span class="current-time">0:00</span>
+                <span class="duration">0:00</span>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="stop">Stop</button>
+        </div>
+    </div>
+
 
     <script src="script.js"></script>
 </body>
