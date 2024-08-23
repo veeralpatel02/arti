@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Boxes</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #333;
+        }
+        .box {
+            position: relative;
+            width: 45%;
+            height: 45vh;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #box1 {
+            background-color: #FF6F61; /* Light Red */
+        }
+        #box2 {
+            background-color: #6B5B95; /* Purple */
+        }
+        #box3 {
+            background-color: #88B04B; /* Green */
+        }
+        #box4 {
+            background-color: #F7CAC9; /* Pink */
+        }
+        .box.dimmed {
+            background-color: #222;
+        }
+        .controls {
+            position: absolute;
+            bottom: 10px;
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+        }
+        button {
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <div id="box1" class="box" onclick="dimBox('box1')">
+        <audio id="audio1">
+            <source src="morningaarti.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+        <div class="controls">
+            <button onclick="playAudio('audio1')">Play</button>
+            <button onclick="pauseAudio('audio1')">Pause</button>
+            <button onclick="stopAudio('audio1')">Stop</button>
+            <button onclick="toggleFullscreen('box1')">Fullscreen</button>
+        </div>
+    </div>
+
+    <div id="box2" class="box" onclick="dimBox('box2')">
+        <audio id="audio2">
+            <source src="eveningaarti.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+        <div class="controls">
+            <button onclick="playAudio('audio2')">Play</button>
+            <button onclick="pauseAudio('audio2')">Pause</button>
+            <button onclick="stopAudio('audio2')">Stop</button>
+            <button onclick="toggleFullscreen('box2')">Fullscreen</button>
+        </div>
+    </div>
+
+    <div id="box3" class="box" onclick="dimBox('box3')">
+        <audio id="audio3">
+            <source src="shayanmaansi.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+        <div class="controls">
+            <button onclick="playAudio('audio3')">Play</button>
+            <button onclick="pauseAudio('audio3')">Pause</button>
+            <button onclick="stopAudio('audio3')">Stop</button>
+            <button onclick="toggleFullscreen('box3')">Fullscreen</button>
+        </div>
+    </div>
+
+    <div id="box4" class="box" onclick="dimBox('box4')">
+        <audio id="audio4">
+            <source src="chesta.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+        <div class="controls">
+            <button onclick="playAudio('audio4')">Play</button>
+            <button onclick="pauseAudio('audio4')">Pause</button>
+            <button onclick="stopAudio('audio4')">Stop</button>
+            <button onclick="toggleFullscreen('box4')">Fullscreen</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
